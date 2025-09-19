@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Element } from 'react-scroll';
 import { Mail, Phone, MapPin, Linkedin, ExternalLink, Send, CheckCircle } from 'lucide-react';
 import { useState } from 'react';
+import ProfessionalLayout from './ProfessionalLayout';
 
 
 interface ContactProps {
@@ -118,29 +119,11 @@ const Contact = ({ language }: ContactProps) => {
 
   return (
     <Element name="contact">
-      <motion.section
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-        className="bg-gradient-to-br from-surface via-surface/80 to-muted/20 p-8 rounded-2xl shadow-card border border-border"
+      <ProfessionalLayout
+        title={contactData.title[language]}
+        icon={<Mail className="text-emerald-500" size={24} />}
+        className="mx-2 sm:mx-0"
       >
-        <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-8"
-        >
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="p-3 bg-gradient-to-br from-primary/10 to-accent/10 rounded-xl">
-              <Mail className="text-primary" size={28} />
-            </div>
-            <h2 className="text-3xl font-bold text-foreground">
-              {contactData.title[language]}
-            </h2>
-          </div>
-        </motion.div>
 
         {isSubmitted && (
           <motion.div
@@ -270,7 +253,7 @@ const Contact = ({ language }: ContactProps) => {
             </form>
           </motion.div>
         </div>
-      </motion.section>
+      </ProfessionalLayout>
     </Element>
   );
 };
