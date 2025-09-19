@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Element } from 'react-scroll';
 import { Mail, Phone, MapPin, Linkedin, ExternalLink, Send, CheckCircle } from 'lucide-react';
 import { useState } from 'react';
-import ProfessionalLayout from './ProfessionalLayout';
+
 
 interface ContactProps {
   language: 'en' | 'bn';

@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Element } from 'react-scroll';
 import { GraduationCap, School, ExternalLink, BookOpen } from 'lucide-react';
-import ProfessionalLayout from './ProfessionalLayout';
+
 
 interface EducationProps {
   language: 'en' | 'bn';

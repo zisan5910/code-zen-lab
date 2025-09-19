@@ -1,19 +1,19 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Element, scroller } from 'react-scroll';
 import { UserCircle, School, BookOpen, Briefcase, FileBadge, Code, HeartHandshake, Mail, Share2, Search, PenTool } from 'lucide-react';
 
 // Import components in alphabetical order
-import CertificateSection from './components/CertificateSection';
+import Certificates from './components/Certificates';
 import Contact from './components/Contact';
 import Courses from './components/Courses';
 import Education from './components/Education';
 import Experience from './components/Experience';
 import FloatingMenu from './components/FloatingMenu';
 import Footer from './components/Footer';
-import Information from './components/Information';
+import Family from './components/Family';
 import Navigation from './components/Navigation';
-import ProfileSection from './components/ProfileSection';
-import Skill from './components/Skill';
+import Profile from './components/Profile';
+import Skills from './components/Skills';
 
 // Import pages
 import Research from './pages/Research';
@@ -26,27 +26,6 @@ function App() {
   const [language, setLanguage] = useState<'en' | 'bn'>('en');
   const [activeSection, setActiveSection] = useState<string>('profile');
   const [currentPage, setCurrentPage] = useState<string>('home');
-  const [age, setAge] = useState<number>(0);
-
-  // Calculate age on component mount and update daily
-  useEffect(() => {
-    const calculateAge = () => {
-      const birthDate = new Date('2007-12-31');
-      const today = new Date();
-      let age = today.getFullYear() - birthDate.getFullYear();
-      const monthDiff = today.getMonth() - birthDate.getMonth();
-
-      if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-        age--;
-      }
-
-      setAge(age);
-    };
-
-    calculateAge();
-    const interval = setInterval(calculateAge, 86400000); // Update daily
-    return () => clearInterval(interval);
-  }, []);
 
   // Navigation configuration
   const navigationItems = [
@@ -106,7 +85,7 @@ function App() {
         return (
           <>
             {/* Profile Section */}
-            <ProfileSection
+            <Profile
               language={language}
               content={content as any}
               scrollToSection={scrollToSection}
@@ -116,41 +95,29 @@ function App() {
             <main className="container mx-auto px-4 py-12">
               <div className="grid grid-cols-1 gap-8">
                 {/* Education Section */}
-                <Element name="education">
-                  <Education language={language} />
-                </Element>
+                <Education language={language} />
 
                 {/* Courses Section */}
-                <Element name="courses">
-                  <Courses language={language} />
-                </Element>
+                <Courses language={language} />
 
                 {/* Experience Section */}
-                <Element name="experience">
-                  <Experience language={language} />
-                </Element>
+                <Experience language={language} />
 
                 {/* Certificates Section */}
-                <CertificateSection
+                <Certificates
                   language={language}
                   content={content}
                   certificates={certificates}
                 />
 
                 {/* Skills Section */}
-                <Element name="skills">
-                  <Skill language={language} />
-                </Element>
+                <Skills language={language} />
 
                 {/* Family Information Section */}
-                <Element name="family">
-                  <Information language={language} age={age} />
-                </Element>
+                <Family language={language} />
 
                 {/* Contact Section */}
-                <Element name="contact">
-                  <Contact language={language} />
-                </Element>
+                <Contact language={language} />
               </div>
             </main>
 
