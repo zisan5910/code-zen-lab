@@ -57,25 +57,38 @@ const Footer = ({ language }: FooterProps) => {
   };
 
   return (
-    <footer className="bg-gradient-to-br from-gray-900 to-gray-800 text-white">
-      <div className="container mx-auto px-4 py-6">
+    <footer className="relative py-16 overflow-hidden bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 text-white">
+      <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col items-center">
-          <h4 className="text-md font-medium mb-4">
-            {footerData.social.title[language]}
-          </h4>
-          <div className="flex justify-center space-x-5">
+          <div className="text-center mb-8">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="p-3 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl shadow-lg">
+                <Mail className="text-white" size={24} />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                {footerData.social.title[language]}
+              </h2>
+            </div>
+          </div>
+          
+          <div className="flex justify-center flex-wrap gap-6 mb-8">
             {footerData.social.links.map((social, index) => (
               <a
                 key={index}
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`text-gray-300 ${social.color} transition-colors duration-200`}
+                className={`p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 ${social.color} transition-all duration-300 hover:scale-110 hover:bg-white/20`}
                 aria-label={`Social link ${index}`}
               >
                 {social.icon}
               </a>
             ))}
+          </div>
+          
+          <div className="text-center text-gray-400 text-sm">
+            <p className="mb-2">© 2024 Md Ridoan Mahmud Zisan. All rights reserved.</p>
+            <p>{language === 'en' ? 'Made with ❤️ in Bangladesh' : 'বাংলাদেশে ❤️ দিয়ে তৈরি'}</p>
           </div>
         </div>
       </div>

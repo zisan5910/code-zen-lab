@@ -152,47 +152,45 @@ function App() {
             </Element>
 
             {/* Main Content Sections */}
-            <main className="container mx-auto px-4 py-12">
-              <div className="grid grid-cols-1 gap-8">
-                {/* Education Section */}
-                <Element name="education">
-                  <Education language={language} />
-                </Element>
+            <main>
+              {/* Education Section */}
+              <Element name="education">
+                <Education language={language} />
+              </Element>
 
-                {/* Courses Section */}
-                <Element name="courses">
-                  <Courses language={language} />
-                </Element>
+              {/* Courses Section */}
+              <Element name="courses">
+                <Courses language={language} />
+              </Element>
 
-                {/* Experience Section */}
-                <Element name="experience">
-                  <Experience language={language} />
-                </Element>
+              {/* Experience Section */}
+              <Element name="experience">
+                <Experience language={language} />
+              </Element>
 
-                {/* Certificates Section */}
-                <Element name="certificates">
-                  <Certificates
-                    language={language}
-                    content={content}
-                    certificates={certificates}
-                  />
-                </Element>
+              {/* Certificates Section */}
+              <Element name="certificates">
+                <Certificates
+                  language={language}
+                  content={content}
+                  certificates={certificates}
+                />
+              </Element>
 
-                {/* Skills Section */}
-                <Element name="skills">
-                  <Skills language={language} />
-                </Element>
+              {/* Skills Section */}
+              <Element name="skills">
+                <Skills language={language} />
+              </Element>
 
-                {/* Family Information Section */}
-                <Element name="family">
-                  <Family language={language} age={age} />
-                </Element>
+              {/* Family Information Section */}
+              <Element name="family">
+                <Family language={language} age={age} />
+              </Element>
 
-                {/* Contact Section */}
-                <Element name="contact">
-                  <Contact language={language} />
-                </Element>
-              </div>
+              {/* Contact Section */}
+              <Element name="contact">
+                <Contact language={language} />
+              </Element>
             </main>
 
             {/* Footer */}
@@ -205,7 +203,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-gray-50/30">
       {/* Navigation */}
       <Navigation 
         navigationItems={navigationItems}
