@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { blogData, BlogPost } from '../data/blogData';
+import { blogData, type BlogPost } from '../data/blogData';
 import { Calendar } from 'lucide-react';
 
 interface BlogProps {
@@ -8,7 +8,7 @@ interface BlogProps {
 
 const Blog = ({ language }: BlogProps) => {
   return (
-    <div className="min-h-screen bg-slate-50 pt-16">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50/30 pt-16">
       <div className="max-w-4xl mx-auto px-4 py-8">
           <div className="space-y-6">
             {blogData.map((post: BlogPost, index) => (
@@ -17,7 +17,7 @@ const Blog = ({ language }: BlogProps) => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="section-card overflow-hidden"
+                className="bg-white/80 backdrop-blur-sm rounded-xl border border-white/20 shadow-lg overflow-hidden"
               >
                 {/* Post Header - Facebook style */}
                 <div className="p-4">
@@ -85,7 +85,7 @@ const Blog = ({ language }: BlogProps) => {
                     {post.projectLinks && post.projectLinks.length > 0 && (
                       <div className="pt-4 border-t border-gray-200">
                         <div className="flex flex-wrap gap-3">
-                          {post.projectLinks.map((link, linkIndex) => (
+                          {post.projectLinks.map((link: any, linkIndex: number) => (
                             <a
                               key={linkIndex}
                               href={link.url}

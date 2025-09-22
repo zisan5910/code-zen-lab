@@ -7,35 +7,6 @@ interface InformationProps {
   age: number;
 }
 
-// Professional Layout Component
-const ProfessionalLayout = ({ children, title, icon, className = '' }: {
-  children: React.ReactNode;
-  title: string;
-  icon: React.ReactNode;
-  className?: string;
-}) => {
-  return (
-    <motion.section
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
-      transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-      className={`professional-card professional-section ${className}`}
-    >
-      <div className="professional-title">
-        <div className="icon-professional">
-          <div className="p-3 bg-gradient-to-br from-red-500 to-rose-600 rounded-xl shadow-lg">
-            {icon}
-          </div>
-        </div>
-        <span className="bg-gradient-to-r from-red-600 via-rose-600 to-pink-600 bg-clip-text text-transparent font-bold">
-          {title}
-        </span>
-      </div>
-      {children}
-    </motion.section>
-  );
-};
 
 const Information = ({ language, age }: InformationProps) => {
   const familyData = {
@@ -99,10 +70,24 @@ const Information = ({ language, age }: InformationProps) => {
 
   return (
     <Element name="family">
-      <ProfessionalLayout
-        title={language === 'en' ? 'Family & Personal Information' : 'পারিবারিক ও ব্যক্তিগত তথ্য'}
-        icon={<Heart className="text-white" size={24} />}
-      >
+      <section className="relative py-16 overflow-hidden bg-gradient-to-br from-rose-50 via-white to-pink-50/30">
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+            className="text-center mb-12"
+          >
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="p-3 bg-gradient-to-br from-rose-500 to-pink-600 rounded-xl shadow-lg">
+                <Heart className="text-white" size={24} />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-rose-600 via-pink-600 to-purple-600 bg-clip-text text-transparent">
+                {language === 'en' ? 'Family & Personal Information' : 'পারিবারিক ও ব্যক্তিগত তথ্য'}
+              </h2>
+            </div>
+          </motion.div>
 
         <div className="space-y-8">
           {/* Family Information */}
@@ -173,7 +158,8 @@ const Information = ({ language, age }: InformationProps) => {
             </ul>
           </motion.div>
         </div>
-      </ProfessionalLayout>
+        </div>
+      </section>
     </Element>
   );
 };

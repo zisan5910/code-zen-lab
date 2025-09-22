@@ -1,3 +1,23 @@
+export interface BlogPost {
+  id: string;
+  title: { en: string; bn: string };
+  content: { en: string; bn: string };
+  date: string;
+  author: { en: string; bn: string };
+  type: 'article' | 'poem';
+  imageUrl?: string;
+  embeddedContent?: {
+    type: 'linkedin' | 'facebook';
+    src: string;
+    width: number;
+    height: number;
+  };
+  projectLinks?: Array<{
+    url: string;
+    label: { en: string; bn: string };
+  }>;
+}
+
 export const blogData: BlogPost[] = [
   {
     id: "linkedin-post-1",

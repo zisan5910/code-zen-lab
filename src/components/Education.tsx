@@ -1,40 +1,11 @@
 import { motion } from 'framer-motion';
 import { Element } from 'react-scroll';
-import { GraduationCap, School, ExternalLink, BookOpen } from 'lucide-react';
+import { GraduationCap, School, ExternalLink } from 'lucide-react';
 
 interface EducationProps {
   language: 'en' | 'bn';
 }
 
-// Professional Layout Component
-const ProfessionalLayout = ({ children, title, icon, className = '' }: {
-  children: React.ReactNode;
-  title: string;
-  icon: React.ReactNode;
-  className?: string;
-}) => {
-  return (
-    <motion.section
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
-      transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-      className={`professional-card professional-section ${className}`}
-    >
-      <div className="professional-title">
-        <div className="icon-professional">
-          <div className="p-3 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl shadow-lg">
-            {icon}
-          </div>
-        </div>
-        <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent font-bold">
-          {title}
-        </span>
-      </div>
-      {children}
-    </motion.section>
-  );
-};
 
 const Education = ({ language }: EducationProps) => {
   const educationHistory = [
@@ -92,12 +63,26 @@ const Education = ({ language }: EducationProps) => {
 
   return (
     <Element name="education">
-      <ProfessionalLayout
-        title={language === 'en' ? 'Education' : 'শিক্ষা'}
-        icon={<BookOpen className="text-white" size={24} />}
-      >
+      <section className="relative py-16 overflow-hidden bg-gradient-to-br from-emerald-50 via-white to-blue-50/30">
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+            className="text-center mb-12"
+          >
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="p-3 bg-gradient-to-br from-emerald-500 to-blue-600 rounded-xl shadow-lg">
+                <GraduationCap className="text-white" size={24} />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-emerald-600 via-blue-600 to-purple-600 bg-clip-text text-transparent">
+                {language === 'en' ? 'Education' : 'শিক্ষা'}
+              </h2>
+            </div>
+          </motion.div>
 
-        <div className="space-y-6">
+          <div className="space-y-6">
           {educationHistory.map((education) => (
             <motion.div
               key={education.id}
@@ -148,7 +133,8 @@ const Education = ({ language }: EducationProps) => {
             </motion.div>
           ))}
         </div>
-      </ProfessionalLayout>
+        </div>
+      </section>
     </Element>
   );
 };

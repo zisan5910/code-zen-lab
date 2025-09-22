@@ -6,35 +6,6 @@ interface ExperienceProps {
   language: 'en' | 'bn';
 }
 
-// Professional Layout Component
-const ProfessionalLayout = ({ children, title, icon, className = '' }: {
-  children: React.ReactNode;
-  title: string;
-  icon: React.ReactNode;
-  className?: string;
-}) => {
-  return (
-    <motion.section
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
-      transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-      className={`professional-card professional-section ${className}`}
-    >
-      <div className="professional-title">
-        <div className="icon-professional">
-          <div className="p-3 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl shadow-lg">
-            {icon}
-          </div>
-        </div>
-        <span className="bg-gradient-to-r from-amber-600 via-orange-600 to-red-600 bg-clip-text text-transparent font-bold">
-          {title}
-        </span>
-      </div>
-      {children}
-    </motion.section>
-  );
-};
 
 const Experience = ({ language }: ExperienceProps) => {
   const experiences = [
@@ -212,12 +183,26 @@ const Experience = ({ language }: ExperienceProps) => {
 
   return (
     <Element name="experience">
-      <ProfessionalLayout
-        title={language === 'en' ? 'Experience' : 'অভিজ্ঞতা'}
-        icon={<Briefcase className="text-white" size={24} />}
-      >
+      <section className="relative py-16 overflow-hidden bg-gradient-to-br from-blue-50 via-white to-indigo-50/30">
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+            className="text-center mb-12"
+          >
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="p-3 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl shadow-lg">
+                <Briefcase className="text-white" size={24} />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                {language === 'en' ? 'Experience' : 'অভিজ্ঞতা'}
+              </h2>
+            </div>
+          </motion.div>
 
-        <div className="space-y-8">
+          <div className="space-y-8">
           {experiences.map((experience) => (
             <motion.div
               key={experience.id}
@@ -291,7 +276,8 @@ const Experience = ({ language }: ExperienceProps) => {
             </motion.div>
           ))}
         </div>
-      </ProfessionalLayout>
+        </div>
+      </section>
     </Element>
   );
 };
